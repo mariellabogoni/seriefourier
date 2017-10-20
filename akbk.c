@@ -6,22 +6,22 @@ void coeficientes(double *x, double *y, int m, char *nome)
 {  
    FILE* saida;
    double *a, *b, *ab, somacos=0, somasen=0;
-   int k, j;
+   int k, j, d;
    
   
   a = malloc(m*sizeof(double));
   b = malloc(m*sizeof(double));
   ab = malloc(m*sizeof(double));
   
-  
+  d=m/2.0;
   saida = fopen(nome, "w");
   
-  for(k=0;k<m;k++)
+  for(k=0;k<d;k++)
   {	
       
       somacos = somasen =0 ;
   		
-  	  for(j=0;j<m-1;j++)
+  	  for(j=0;j<d-1;j++)
       {  
             
            	somacos = somacos + y[j] * cos(k * x[j]);
@@ -31,8 +31,8 @@ void coeficientes(double *x, double *y, int m, char *nome)
        printf("Soma sen : %lf\n", somasen);
        printf("Soma cosseno : %lf\n", somacos);
        
-       a[k] = (1/m)*somacos;
-       b[k] = (1/m)*somasen;
+       a[k] = (1.0/m)*somacos;
+       b[k] = (1.0/m)*somasen;
        ab[k] = a[k] * a[k] + b[k] * b[k];
        
        //printf("%lf\n", a[k]);
